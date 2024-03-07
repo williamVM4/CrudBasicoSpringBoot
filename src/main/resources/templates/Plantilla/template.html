@@ -1,0 +1,16 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Plantilla</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <header th:fragment="encabezado">
+            <h1 th:text="#{layout.titulo}"></h1>
+        </header>
+        
+        <footer th:fragment="footer">
+            <p>Todos los derechos reservados</p>
+        </footer>
+    </body>
+</html>

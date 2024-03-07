@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Inicio</title>
+</head>
+<body>
+    <header th:replace="Plantilla/template :: encabezado"></header>
+    <h2>Listado de Personas</h2>
+    <div th:if="${personas != null and !personas.empty}">
+        <table border="2">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Edad</th>
+                    <th>Correo</th>
+                    <th>Telefono</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="persona : ${personas}">
+                    <td th:text="${persona.nombre}">Nombre</td>
+                    <td th:text="${persona.apellido}">Nombre</td>
+                    <td th:text="${persona.edad}">Nombre</td>
+                    <td th:text="${persona.correo}">Nombre</td>
+                    <td th:text="${persona.telefono}">Nombre</td>
+                    <td>
+                        <a th:href="@{/actualizar/{id}(id=${persona.idPersona})}">Editar</a>
+                        <form th:action="@{/eliminar/{id}(id=${persona.idPersona})}" method="post">
+                            <input type="submit" value="Eliminar"/>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <a th:href="@{/agregar}">[[#{persona.agregar}]]</a>
+    <footer th:replace="Plantilla/template :: footer"></footer>
+</body>
+</html>
+
